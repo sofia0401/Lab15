@@ -8,8 +8,6 @@ public class Main {
         MyCollection collection = new MyCollection();
         Scanner sc = new Scanner(System.in);
 
-        int x;
-        int command;
         System.out.println("1 - добавление\n" +
                 "2 - удаление\n" +
                 "3 - поиск элемента по значению\n" +
@@ -18,37 +16,39 @@ public class Main {
                 "6 - поиск минимального элемента\n" +
                 "7 - поиск среднего арифметического всех элементов");
         while (true) {
-            command = sc.nextInt();
-            switch (command) {
+            switch (sc.nextInt()) {
                 case 1:
-                    x = sc.nextInt();
-                    collection.Add(x);
+                    System.out.print("Введите значение добавляемого элемента: ");
+                    collection.Add(sc.nextInt());
+                    System.out.println("Элемент добавлен");
                     break;
                 case 2:
-                    x = sc.nextInt();
-                    collection.Remove(x);
+                    System.out.print("Введите индекс удаляемого элемента: ");
+                    collection.Remove(sc.nextInt());
+                    System.out.println("Элемент удален");
                     break;
                 case 3:
-                    x = sc.nextInt();
-                    collection.valueSearch(x);
+                    System.out.print("Введите значение искомого элемента: ");
+                    if (collection.valueSearch(sc.nextInt()))
+                        System.out.println("Элемент найден");
+                    else
+                        System.out.println("Элемент не найден");
                     break;
                 case 4:
-                    x = sc.nextInt();
-                    System.out.println(collection.indexSearch(x));
+                    System.out.print("Введите индекс искомого элемента: ");
+                    collection.indexSearch(sc.nextInt());
                     break;
                 case 5:
-                    x = 0;
-                    System.out.println(collection.maximum(x));
+                    System.out.println(collection.Maximum());
                     break;
                 case 6:
-                    x = 0;
-                    System.out.println(collection.minimum(x));
+                    System.out.println(collection.Minimum());
                     break;
                 case 7:
                     System.out.println(collection.Average());
                     break;
                 default:
-                    System.out.println("There is no such command");
+                    System.out.println("Такой команды нет");
                     break;
             }
         }
